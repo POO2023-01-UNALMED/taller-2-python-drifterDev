@@ -42,18 +42,12 @@ class Auto:
     return c
 
   def verificarIntegridad(self):
-    vericidad=True
-    verificar=[self.motor.registro, self.registro]
-    for j in self.asientos:
-      verificar.append(j.registro)
-    registron=self.motor.registro
-    for m in verificar:
-      if m!=registron:
-        verificar=False
-    if vericidad:
-      return "Auto original"
-    else:
+    if self.registro != self.motor.registro:
       return "Las piezas no son originales"
+    for j in self.asientos:
+      if j.registro != self.registro:
+        return "Las piezas no son originales"
+    return "Auto original"
   
 
   
