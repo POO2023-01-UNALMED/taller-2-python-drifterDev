@@ -9,8 +9,8 @@ class Motor:
     self.registro=registro
 
   def asignarTipo(self, tipo:str):
-    if tipo=="electrico" or tipo=="gasolina":
-      self.tipo=tipo
+    if tipo.lower()=="electrico" or tipo.lower()=="gasolina":
+      self.tipo=tipo.lower()
 
 class Asiento:
   def __init__ (self, color:str, precio:int, registro:int):
@@ -19,10 +19,9 @@ class Asiento:
     self.registro=registro
   
   def cambiarColor(self, color:str):
-    if (color=="verde" or color=="rojo" or color=="amarillo" or color=="negro" or color=="blanco"):
-      self.color=color
-    else:
-      self.color=self.color
+    colores=["verde", "rojo", "amarillo", "negro", "blanco"]
+    if color.lower() in colores:
+      self.color=color.lower()
 
 class Auto:
   cantidadCreados=0
@@ -35,11 +34,11 @@ class Auto:
     self.registro=registro
 
   def cantidadAsientos(self):
-    c=0
+    cantidad=0
     for i in range(len(self.asientos)):
       if type(self.asientos[i])==Asiento:
-        c+=1
-    return c
+        cantidad+=1
+    return cantidad
 
   def verificarIntegridad(self):
     if self.registro != self.motor.registro:
